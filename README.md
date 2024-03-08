@@ -1,2 +1,3 @@
 # e-comm
-e-commerce
+
+To run the application use `ng serve`
