@@ -4,7 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 const httpOptions = {
@@ -18,9 +18,18 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class OwnerServiceService {
+  screenName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private url = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {}
+
+  getCurrentScreen() {
+    return this.screenName$.asObservable();
+  }
+
+  setCurrentScreen(screen: string) {
+    this.screenName$.next(screen);
+  }
 
   loginAdmin(endpoints, body): Observable<any> {
     return this.http.post(this.url + endpoints, body).pipe(

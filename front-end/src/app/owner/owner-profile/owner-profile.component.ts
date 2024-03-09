@@ -25,13 +25,14 @@ export class OwnerProfileComponent {
   }
 
   ngOnInit() {
+    this.ownerService.setCurrentScreen('profile');
     if (!localStorage.getItem('isLoggedIn')) {
       this.router.navigate(['/']);
     }
     this.ownerService
       .getAdminProfile(apiEndPoints.getProfile)
       .subscribe((profile) => {
-        console.log(profile);
+        // console.log(profile);
         this.profileForm.controls['fullName'].setValue(profile.data.fullName);
         this.profileForm.controls['email'].setValue(profile.data.email);
         this.profileForm.controls['phoneNumber'].setValue(

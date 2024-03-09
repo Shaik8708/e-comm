@@ -33,11 +33,18 @@ export class OwnerLoginComponent {
 
   login(loginData) {
     if (loginData.Password && loginData.EmailOrNumber) {
-      let body = {
-        email: loginData.EmailOrNumber,
-        password: loginData.Password,
-      };
-
+      let body;
+      if (parseInt(loginData.EmailOrNumber)) {
+        body = {
+          phone: loginData.EmailOrNumber,
+          password: loginData.Password,
+        };
+      } else {
+        body = {
+          email: loginData.EmailOrNumber,
+          password: loginData.Password,
+        };
+      }
       this.loginMethod(body);
     }
   }
