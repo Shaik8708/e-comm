@@ -17,7 +17,7 @@ export class OwnerProfileComponent {
     private ownerService: OwnerServiceService,
     private formBuilder: FormBuilder
   ) {
-    this.profileForm = formBuilder.group({
+    this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       email: ['', Validators.required],
       phoneNumber: ['', Validators.required],
