@@ -1,0 +1,85 @@
+<app-owner-header></app-owner-header>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4 class="card-title mb-0">Admin Profile</h4>
+        </div>
+        <div class="card-body">
+          <!-- Personal Information -->
+          <form [formGroup]="profileForm">
+            <h5 class="card-subtitle mb-3 text-muted">Personal Information</h5>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fullName"
+                placeholder="Enter your full name"
+                [formControl]="profileForm.controls['fullName']"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email address"
+                [formControl]="profileForm.controls['email']"
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phone"
+                placeholder="Enter your phone number"
+                [formControl]="profileForm.controls['phoneNumber']"
+              />
+            </div>
+            <!-- Address Information -->
+            <!-- <h5 class="card-subtitle mb-3 mt-4 text-muted">Address</h5>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Enter your address"
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="Enter your city"
+            />
+          </div>
+          <div class="form-group">
+            <label for="zipCode">Zip Code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zipCode"
+              placeholder="Enter your zip code"
+            />
+          </div> -->
+            <!-- Update Button -->
+            <button
+              type="button"
+              (click)="updateProfile()"
+              class="btn btn-primary mt-2"
+            >
+              Update Profile
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

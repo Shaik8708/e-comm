@@ -33,6 +33,15 @@
   .btn-gradient:hover {
     transform: scale(1.05);
   }
+
+  .errorNotification{
+    background: linear-gradient(to right, #fd7c87, #ffcd87);
+    position: fixed;
+    border: none;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; 
+  }
   
  
   

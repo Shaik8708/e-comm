@@ -1,1 +1,39 @@
-<p>owner-dashboard works!</p>
+<app-owner-header></app-owner-header>
+<div class="container">
+  <div class="row display-4">Dashboard</div>
+  <div class="row mt-4">
+    <div [routerLink]="['category']" class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Category</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            nec iaculis mauris.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div [routerLink]="['profile']" class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            nec iaculis mauris.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Orders</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            nec iaculis mauris.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

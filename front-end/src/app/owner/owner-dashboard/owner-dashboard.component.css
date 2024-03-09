@@ -1,0 +1,14 @@
+.card {
+    border: none;
+    background: linear-gradient(to right, #FF5F6D, #FFC371);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #555;
+  }
+  

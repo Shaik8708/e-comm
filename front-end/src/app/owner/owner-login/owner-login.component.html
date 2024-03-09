@@ -1,12 +1,13 @@
 <div class="login-container">
   <h2>Login</h2>
-  <form>
+  <form [formGroup]="loginForm">
     <div class="form-group">
       <input
         type="text"
         class="form-control"
         id="username"
         placeholder="Email or Phone no"
+        [formControl]="loginForm.controls['EmailOrNumber']"
       />
     </div>
     <div class="form-group mt-2">
@@ -15,8 +16,19 @@
         class="form-control"
         id="password"
         placeholder="Password"
+        [formControl]="loginForm.controls['Password']"
       />
     </div>
-    <button (click)="login()" class="btn btn-gradient mt-3">Login</button>
+    <button
+      type="button"
+      (click)="login(loginForm.value)"
+      class="btn btn-gradient mt-3"
+    >
+      Login
+    </button>
   </form>
+</div>
+
+<div *ngIf="invalidLogin" class="card errorNotification">
+  <div class="card-body">Email/Number or Password is invalid.</div>
 </div>

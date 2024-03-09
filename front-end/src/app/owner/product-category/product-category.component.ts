@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-owner-dashboard',
-  templateUrl: './owner-dashboard.component.html',
-  styleUrl: './owner-dashboard.component.css',
+  selector: 'app-product-category',
+  templateUrl: './product-category.component.html',
+  styleUrl: './product-category.component.css',
 })
-export class OwnerDashboardComponent {
+export class ProductCategoryComponent {
   constructor(private router: Router) {}
   ngOnInit() {
     if (!localStorage.getItem('isLoggedIn')) {
