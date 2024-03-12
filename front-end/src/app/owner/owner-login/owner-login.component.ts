@@ -57,6 +57,7 @@ export class OwnerLoginComponent {
         this.invalidLogin = false;
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('jwt', this.ownerProfile.accessToken);
+        console.log(localStorage.getItem('jwt'), 'method');
       },
       error: (error) => {
         this.invalidLogin = true;
