@@ -1,2 +1,236 @@
 <app-owner-header></app-owner-header>
-<p>product-category works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="display-4 mt-5">Categories</h1>
+    </div>
+    <div class="col-md-3">
+      <button
+        class="btn btn-lg btn-add mt-5"
+        data-bs-toggle="modal"
+        data-bs-target="#addNewCategory"
+      >
+        Add new
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4 mb-4" *ngFor="let category of allCategories">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ category.categoryName }}</h5>
+          <p class="card-text">{{ category.description }}</p>
+          <button class="btn btn-view w-100 text-center mb-3">
+            View {{ category.categoryName }}
+          </button>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <button
+                class="btn update-btn btn-sm w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#updateCategory"
+                (click)="openEditModal(category)"
+              >
+                Update
+              </button>
+            </div>
+            <div class="col-md-6 mb-2">
+              <button
+                class="btn btn-delete btn-sm w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+                (click)="openDeleteModal(category)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Modal -->
+
+  <div
+    class="modal fade"
+    id="addNewCategory"
+    tabindex="-1"
+    aria-labelledby="addNewCategoryModal"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addNewCategoryModal">
+            Add new Category
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            #closeAddModal
+            style="display: none"
+          ></button>
+          <!-- (click)="resetUpdateForm()" -->
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addNewCategoryForm">
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">Category Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="categoryName"
+                aria-describedby="categoryHelp"
+                [formControl]="addNewCategoryForm.controls['CategoryName']"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="categoryDescription" class="form-label"
+                >Category Description</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                [formControl]="
+                  addNewCategoryForm.controls['CategoryDescription']
+                "
+                id="categoryDescription"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-warning"
+            data-bs-dismiss="modal"
+            (click)="resetAddForm()"
+          >
+            Close
+          </button>
+          <button type="button" class="btn update-btn" (click)="addCategory()">
+            Add Category
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Modal -->
+  <div
+    class="modal fade"
+    id="updateCategory"
+    tabindex="-1"
+    aria-labelledby="updateCategoryModal"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="updateCategoryModal">
+            Update Category
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            #closeUpdateModal
+            style="display: none"
+          ></button>
+          <!-- (click)="resetUpdateForm()" -->
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="updateCategoryForm">
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">Category Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="categoryName"
+                aria-describedby="categoryHelp"
+                [formControl]="updateCategoryForm.controls['CategoryName']"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="categoryDescription" class="form-label"
+                >Category Description</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                [formControl]="
+                  updateCategoryForm.controls['CategoryDescription']
+                "
+                id="categoryDescription"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-warning"
+            data-bs-dismiss="modal"
+            (click)="resetUpdateForm()"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn update-btn"
+            (click)="updateCategory()"
+          >
+            Update changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    aria-labelledby="deleteModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteModalLabel">
+            Delete Category
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            #closeDeleteBtn
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Do you really want to delete
+          <span class="h5"> {{ deleteCategoryName }}? </span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-delete"
+            (click)="deleteCategory()"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

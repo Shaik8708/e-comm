@@ -45,6 +45,8 @@ export class OwnerServiceService {
   }
 
   getAdminProfile(endpoints): Observable<any> {
+    console.log(localStorage.getItem('jwt'), 'service');
+
     return this.http.get(this.url + endpoints, httpOptions);
   }
 }

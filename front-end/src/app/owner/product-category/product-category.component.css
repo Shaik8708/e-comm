@@ -1,0 +1,53 @@
+/* styles.css */
+.card {
+  border: none;
+  cursor: pointer;
+  background-color: #ffc371;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.btn-view {
+  border: none;
+  background: linear-gradient(to right, #ff5f6d, #ffc371, #ff5f6d);
+  transition: transform 0.3s;
+}
+
+.btn-view:hover {
+  background: linear-gradient(to right, #ffc371, #ff5f6d, #ffc371);
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background-color: #ff5f6d;
+}
+
+.btn-delete:hover {
+  background-color: #ff3344;
+  transform: scale(1.05);
+}
+
+.update-btn {
+  border: none;
+  background: #ff5f6d;
+  transition: transform 0.3s;
+}
+
+.update-btn:hover {
+  transform: scale(1.05);
+  background: #fb8993;
+}
+
+.btn-add {
+  border: none;
+  background: #ffc371;
+  transition: transform 0.3s;
+}
+
+.btn-add:hover {
+  transform: scale(1.05);
+  background: #fb8993;
+}
