@@ -5,6 +5,7 @@ export const apiEndPoints = {
   updateCategory: 'api/v1/category/update',
   createCategory: 'api/v1/category/create',
   deleteCategory: 'api/v1/category/delete',
+  getAllProducts: 'api/v1/product/getAllProduct',
 };
 
 export const baseUrl = 'http://localhost:8080/';

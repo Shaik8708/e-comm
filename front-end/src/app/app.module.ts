@@ -12,6 +12,8 @@ import { OwnerHeaderComponent } from './main/owner-header/owner-header.component
 import { ProductCategoryComponent } from './owner/product-category/product-category.component';
 import { OwnerProfileComponent } from './owner/owner-profile/owner-profile.component';
 import { OwnerAllOrdersComponent } from './owner/owner-all-orders/owner-all-orders.component';
+import { ProductsComponent } from './owner/products/products.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { OwnerAllOrdersComponent } from './owner/owner-all-orders/owner-all-orde
     ProductCategoryComponent,
     OwnerProfileComponent,
     OwnerAllOrdersComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { OwnerAllOrdersComponent } from './owner/owner-all-orders/owner-all-orde
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

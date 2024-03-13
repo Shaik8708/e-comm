@@ -49,6 +49,10 @@ export class OwnerHeaderComponent {
         this.ownerService.screenName$.next('orders');
         this.router.navigate(['dashboard/orders']);
         break;
+      case 'products':
+        this.ownerService.screenName$.next('products');
+        this.router.navigate(['dashboard/products']);
+        break;
 
       default:
         break;

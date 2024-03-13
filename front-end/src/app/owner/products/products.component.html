@@ -1,0 +1,293 @@
+<app-owner-header></app-owner-header>
+
+<!-- product-list.component.html -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="display-4 mt-5">Products</h1>
+    </div>
+    <div class="col-md-3 float-end">
+      <button
+        class="btn btn-lg btn-add mt-5"
+        data-bs-toggle="modal"
+        data-bs-target="#addNewProduct"
+      >
+        Add new
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of allProducts">
+      <div class="card h-100 product-card">
+        <img
+          class="card-img-top"
+          src="https://picsum.photos/200"
+          alt="{{ product.productName }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.productName }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ product.amount }} Rs</h6>
+          <p class="card-text">{{ product.description }}</p>
+          <button
+            class="btn update-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#updateProduct"
+            (click)="openEditModal(product)"
+          >
+            Update
+          </button>
+          <button
+            class="btn btn-delete mt-2"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+            (click)="openDeleteModal(product)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Products Modal -->
+
+<div
+  class="modal fade"
+  id="addNewProduct"
+  tabindex="-1"
+  aria-labelledby="addNewProductModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addNewProductModal">
+          Add new Product
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeAddModal
+          style="display: none"
+        ></button>
+        <!-- (click)="resetUpdateForm()" -->
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addProductsForm">
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              aria-describedby="productHelp"
+              [formControl]="addProductsForm.controls['productName']"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label"
+              >Product Description</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="addProductsForm.controls['description']"
+              id="description"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="categoryAddId" class="form-label">Category Id</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="addProductsForm.controls['categoryId']"
+              id="categoryAddId"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="addProductsForm.controls['amount']"
+              id="amount"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="addProductsForm.controls['quantity']"
+              id="quantity"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="featured" class="form-label">Featured</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="addProductsForm.controls['featured']"
+              id="featured"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-dismiss="modal"
+          (click)="resetAddForm()"
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-add" (click)="addProduct()">
+          Add Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update Modal -->
+
+<div
+  class="modal fade"
+  id="updateProduct"
+  tabindex="-1"
+  aria-labelledby="updateProductModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updateProductModal">Update Product</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeUpdateModal
+          style="display: none"
+        ></button>
+        <!-- (click)="resetUpdateForm()" -->
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editProductsForm">
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              aria-describedby="productHelp"
+              [formControl]="editProductsForm.controls['productName']"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label"
+              >Product Description</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="editProductsForm.controls['description']"
+              id="description"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="categoryId" class="form-label">Category Id</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="editProductsForm.controls['categoryId']"
+              id="categoryId"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Amount</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="editProductsForm.controls['amount']"
+              id="price"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="editProductsForm.controls['quantity']"
+              id="quantity"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="featured" class="form-label">Featured</label>
+            <input
+              type="text"
+              class="form-control"
+              [formControl]="editProductsForm.controls['featured']"
+              id="featured"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-dismiss="modal"
+          (click)="resetEditForm()"
+        >
+          Close
+        </button>
+        <button type="button" class="btn update-btn" (click)="updateProduct()">
+          Update product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete product</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          #closeDeleteBtn
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete
+        <span class="h5"> {{ deleteProductName }}? </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-delete" (click)="deleteProduct()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

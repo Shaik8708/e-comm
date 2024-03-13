@@ -38,8 +38,8 @@ export class ProductCategoryComponent {
   }
 
   ngOnInit() {
-    this.ownerService.setCurrentScreen('category');
     this.getCategories();
+    this.ownerService.setCurrentScreen('category');
     if (!localStorage.getItem('isLoggedIn')) {
       this.router.navigate(['/']);
     }
