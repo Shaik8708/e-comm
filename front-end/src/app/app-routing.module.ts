@@ -6,6 +6,7 @@ import { OwnerDashboardComponent } from '../app/owner/owner-dashboard/owner-dash
 import { ProductCategoryComponent } from '../app/owner/product-category/product-category.component';
 import { OwnerProfileComponent } from '../app/owner/owner-profile/owner-profile.component';
 import { OwnerAllOrdersComponent } from '../app/owner/owner-all-orders/owner-all-orders.component';
+import { ProductsComponent } from '../app/owner/products/products.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'dashboard/category', component: ProductCategoryComponent },
   { path: 'dashboard/profile', component: OwnerProfileComponent },
   { path: 'dashboard/orders', component: OwnerAllOrdersComponent },
+  { path: 'dashboard/products', component: ProductsComponent },
 ];
 
 @NgModule({
